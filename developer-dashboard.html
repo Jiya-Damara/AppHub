@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portal</title>
+    <link rel="stylesheet" href="/contents/css/developer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="page">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <div class="logo-container">
+                <span class="logo">AppHub</span>
+            </div>
+            <div class="nav-links">
+                <!-- <a href="#" class="nav-link">Dashboard</a>
+                <a href="#" class="nav-link">Documentation</a>
+                <a href="#" class="nav-link">Support</a> -->
+                <div class="profile-dropdown">
+                    <button id="profileBtn" class="profile-button">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Account</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </button>
+                    <div id="profileMenu" class="dropdown-menu hidden">
+                        <a href="#" class="dropdown-item">Profile</a>
+                        <a href="#" class="dropdown-item">Settings</a>
+                        <a href="#" class="dropdown-item">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <!-- Header with Analytics Summary -->
+        <div class="dashboard-header">
+            <div class="dashboard-header-content">
+                <div class="dashboard-title-section">
+                    <span class="dashboard-badge">App Management Dashboard</span>
+                    <h1 class="dashboard-title">Developer Portal</h1>
+                    <p class="dashboard-subtitle">Manage your applications effectively and track performance</p>
+                </div>
+                <div class="period-selector">
+                    <span class="period-label">Current Period</span>
+                    <div class="select-wrapper">
+                        <select id="periodSelect" class="period-select">
+                            <option value="week">Last 7 days</option>
+                            <option value="month" selected>Last 30 days</option>
+                            <option value="quarter">Last 90 days</option>
+                        </select>
+                        <div class="select-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon-container blue">
+                            <i class="fas fa-box stat-icon"></i>
+                        </div>
+                        <div class="stat-details">
+                            <p class="stat-label">Total Apps</p>
+                            <p class="stat-value" id="totalApps">3</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon-container green">
+                            <i class="fas fa-download stat-icon"></i>
+                        </div>
+                        <div class="stat-details">
+                            <p class="stat-label">Downloads</p>
+                            <p class="stat-value" id="downloads">1,432</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon-container purple">
+                            <i class="fas fa-star stat-icon"></i>
+                        </div>
+                        <div class="stat-details">
+                            <p class="stat-label">Avg Rating</p>
+                            <p class="stat-value" id="rating">4.7</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon-container yellow">
+                            <i class="fas fa-code-branch stat-icon"></i>
+                        </div>
+                        <div class="stat-details">
+                            <p class="stat-label">Updates</p>
+                            <p class="stat-value" id="updates">7</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit New App Section -->
+        <div class="section submit-app-section">
+            <h2 class="section-title">
+                <i class="fas fa-plus-circle section-icon"></i>
+                Submit New App
+            </h2>
+            
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="feature-icon-container blue">
+                        <i class="fas fa-box-open feature-icon"></i>
+                    </div>
+                    <p class="feature-title">Package Details</p>
+                    <p class="feature-description">Configure app metadata, versioning, and platform support.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-container green">
+                        <i class="fas fa-images feature-icon"></i>
+                    </div>
+                    <p class="feature-title">Preview Assets</p>
+                    <p class="feature-description">Add screenshots, icons, and demo videos for app listing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-container purple">
+                        <i class="fas fa-tags feature-icon"></i>
+                    </div>
+                    <p class="feature-title">Categories & Tags</p>
+                    <p class="feature-description">Improve app discoverability with the right categorization.</p>
+                </div>
+            </div>
+            
+            <!-- App Form -->
+            <form id="appForm" class="app-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="appName" class="form-label">App Name</label>
+                        <input type="text" id="appName" name="appName" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="version" class="form-label">Version</label>
+                        <input type="text" id="version" name="version" placeholder="1.0.0" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="category" class="form-label">Category</label>
+                        <select id="category" name="category" class="form-select">
+                            <option value="">Select a category</option>
+                            <option value="ui">UI Components</option>
+                            <option value="frontend">Frontend Tools</option>
+                            <option value="backend">Backend Solutions</option>
+                            <option value="mobile">Mobile Development</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="platforms" class="form-label">Supported Platforms</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="platforms" value="web" class="checkbox-input">
+                                Web
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="platforms" value="android" class="checkbox-input">
+                                Android
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="platforms" value="ios" class="checkbox-input">
+                                iOS
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="platforms" value="desktop" class="checkbox-input">
+                                Desktop
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description" class="form-label">App Description</label>
+                    <textarea id="description" name="description" rows="4" class="form-textarea"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">App Package Upload</label>
+                    <div class="dropzone" id="dropZone">
+                        <i class="fas fa-cloud-upload-alt dropzone-icon"></i>
+                        <p class="dropzone-text">Drag and drop your app package here</p>
+                        <p class="dropzone-text-small">or</p>
+                        <button type="button" class="browse-button" id="browseBtn">Browse Files</button>
+                        <input type="file" id="fileInput" class="hidden" accept=".zip,.tar.gz">
+                        <p id="fileStatus" class="file-status"></p>
+                    </div>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="button" class="button secondary-button">Save Draft</button>
+                    <button type="submit" class="button primary-button">Submit App</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Your Apps Section -->
+        <div class="section apps-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-cubes section-icon"></i>
+                    Your Apps
+                </h2>
+                <div class="search-filter">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search apps..." class="search-input">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    <div class="select-wrapper">
+                        <select id="filter" class="filter-select">
+                            <option value="all">All Categories</option>
+                            <option value="ui">UI</option>
+                            <option value="frontend">Frontend</option>
+                            <option value="backend">Backend</option>
+                            <option value="mobile">Mobile</option>
+                        </select>
+                        <div class="select-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- App Cards -->
+            <div class="app-grid">
+                <!-- App Card 1 -->
+                <div class="app-card" data-category="ui frontend">
+                    <div class="app-card-header blue-gradient">
+                        <div class="app-version">v1.2.3</div>
+                        <div class="app-title-container">
+                            <h3 class="app-title">UI Framework</h3>
+                            <p class="app-subtitle">Comprehensive UI component library</p>
+                        </div>
+                    </div>
+                    <div class="app-card-body">
+                        <div class="app-meta">
+                            <div class="app-meta-item">
+                                <i class="fas fa-download meta-icon"></i>
+                                <span>531</span>
+                            </div>
+                            <div class="app-meta-item">
+                                <i class="fas fa-star meta-icon star"></i>
+                                <span>4.8</span>
+                            </div>
+                            <div class="app-meta-item">
+                                <i class="fas fa-calendar-alt meta-icon"></i>
+                                <span>Feb 10, 2025</span>
+                            </div>
+                        </div>
+                        <div class="app-tags">
+                            <span class="tag blue">UI</span>
+                            <span class="tag purple">Frontend</span>
+                        </div>
+                        <div class="app-actions">
+                            <button class="app-button details-button">
+                                <i class="fas fa-eye button-icon"></i> Details
+                            </button>
+                            <button class="app-button update-button updateBtn">
+                                <i class="fas fa-upload button-icon"></i> Update
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- App Card 2 -->
+                <div class="app-card" data-category="backend">
+                    <div class="app-card-header green-gradient">
+                        <div class="app-version">v2.0.1</div>
+                        <div class="app-title-container">
+                            <h3 class="app-title">API Manager</h3>
+                            <p class="app-subtitle">Backend API management solution</p>
+                        </div>
+                    </div>
+                    <div class="app-card-body">
+                        <div class="app-meta">
+                            <div class="app-meta-item">
+                                <i class="fas fa-download meta-icon"></i>
+                                <span>723</span>
+                            </div>
+                            <div class="app-meta-item">
+                                <i class="fas fa-star meta-icon star"></i>
+                                <span>4.6</span>
+                            </div>
+                            <div class="app-meta-item">
+                                <i class="fas fa-calendar-alt meta-icon"></i>
+                                <span>Jan 25, 2025</span>
+                            </div>
+                        </div>
+                        <div class="app-tags">
+                            <span class="tag green">Backend</span>
+                        </div>
+                        <div class="app-actions">
+                            <button class="app-button details-button">
+                                <i class="fas fa-eye button-icon"></i> Details
+                            </button>
+                            <button class="app-button update-button updateBtn">
+                                <i class="fas fa-upload button-icon"></i> Update
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- App Card 3 -->
+                <div class="app-card" data-category="mobile">
+                    <div class="app-card-header orange-gradient">
+                        <div class="app-version">v1.0.0</div>
+                        <div class="app-title-container">
+                            <h3 class="app-title">Mobile SDK</h3>
+                            <p class="app-subtitle">Cross-platform mobile development kit</p>
+                        </div>
+                    </div>
+                    <div class="app-card-body">
+                        <div class="app-meta">
+                            <div class="app-meta-item">
+                                <i class="fas fa-download meta-icon"></i>
+                                <span>178</span>
+                            </div>
+                            <div class="app-meta-item">
+                                <i class="fas fa-star meta-icon star"></i>
+                                <span>4.2</span>
+                            </div>
+                            <div class="app-meta-item">
+                                <i class="fas fa-calendar-alt meta-icon"></i>
+                                <span>Feb 18, 2025</span>
+                            </div>
+                        </div>
+                        <div class="app-tags">
+                            <span class="tag orange">Mobile</span>
+                        </div>
+                        <div class="app-actions">
+                            <button class="app-button details-button">
+                                <i class="fas fa-eye button-icon"></i> Details
+                            </button>
+                            <button class="app-button update-button updateBtn">
+                                <i class="fas fa-upload button-icon"></i> Update
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Load More -->
+            <div class="load-more">
+                <button class="load-more-button" id="loadMore">
+                    Load More Apps
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 class="footer-title">Developer Portal</h3>
+                    <p class="footer-description">The one-stop platform for all your app development and distribution needs.</p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-subtitle">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Dashboard</a></li>
+                        <li><a href="#" class="footer-link">Documentation</a></li>
+                        <li><a href="#" class="footer-link">Submit App</a></li>
+                        <li><a href="#" class="footer-link">API Reference</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-subtitle">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Help Center</a></li>
+                        <li><a href="#" class="footer-link">Community Forums</a></li>
+                        <li><a href="#" class="footer-link">Contact Support</a></li>
+                        <li><a href="#" class="footer-link">Status Page</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-subtitle">Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+                    </div>
+                    <p class="newsletter-text">Subscribe to our newsletter</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email" class="newsletter-input">
+                        <button class="newsletter-button">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Developer Portal. All rights reserved.</p>
+                <div class="footer-policies">
+                    <a href="#" class="policy-link">Privacy Policy</a>
+                    <a href="#" class="policy-link">Terms of Service</a>
+                    <a href="#" class="policy-link">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Upload Modal -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Upload New Version</h3>
+                <button id="closeModal" class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="versionForm" class="modal-form">
+                <div class="form-group">
+                    <label for="newVersion" class="form-label">Version Number</label>
+                    <input type="text" id="newVersion" name="newVersion" placeholder="1.0.1" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label for="notes" class="form-label">Release Notes</label>
+                    <textarea id="notes" name="notes" rows="3" class="form-textarea" placeholder="What's new in this version?"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Upload Package</label>
+                    <div class="modal-dropzone" id="modalDrop">
+                        <i class="fas fa-cloud-upload-alt dropzone-icon"></i>
+                        <p class="dropzone-text">Drag and drop your package here</p>
+                        <p class="dropzone-text-small">or</p>
+                        <button type="button" class="browse-button" id="modalBrowse">Select File</button>
+                        <input type="file" id="modalFile" class="hidden" accept=".zip,.tar.gz">
+                        <p id="modalStatus" class="file-status"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="button secondary-button" id="cancelUpload">Cancel</button>
+                    <button type="submit" class="button primary-button">Upload Version</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/contents/js/developer.js"></script>
+</body>
+</html>

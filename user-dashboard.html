@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern App Store</title>
+    <link rel="stylesheet" href="/contents/css/user.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">AppHub</div>
+            <input type="text" class="search-box" placeholder="Search apps...">
+            <button id="updateAllBtn" class="btn btn-primary">
+                <span class="btn-icon">↑</span>
+                Update All
+            </button>
+        </div>
+        
+    </header>
+
+    <nav class="nav">
+        <ul class="category-list">
+            <li class="category-item active" data-category="All Apps">All Apps</li>
+            <li class="category-item" data-category="Design">Design</li>
+            <li class="category-item" data-category="Development">Development</li>
+            <li class="category-item" data-category="Entertainment">Entertainment</li>
+            <li class="category-item" data-category="Productivity">Productivity</li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="controls">
+            <div class="filters">
+                <select id="statusFilter">
+                    <option value="all">All Status</option>
+                    <option value="installed">Installed</option>
+                    <option value="not-installed">Not Installed</option>
+                    <option value="update-available">Updates Available</option>
+                </select>
+
+                <select id="sortOption">
+                    <option value="name">Sort by Name</option>
+                    <option value="date">Sort by Date</option>
+                    <option value="rating">Sort by Rating</option>
+                    <option value="size">Sort by Size</option>
+                </select>
+            </div>
+
+            <button id="viewToggle" class="btn btn-outline">
+                <span class="btn-icon">📊</span>
+                Toggle View
+            </button>
+        </div>
+        <div id="appsContainer" class="apps-grid"></div>
+    </main>
+
+    <div id="toastContainer"></div>
+    <script src="/contents/js/user.js"></script>
+</body>
+</html>
+
