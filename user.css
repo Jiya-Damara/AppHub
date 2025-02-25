@@ -1,6 +1,6 @@
 
 :root {
-    --primary-color: #000000;
+    --primary-color: #4f46e5;
     --danger-color: #7f1a24;
     --success-color: #21983d;
     --warning-color: #ffbf00;
@@ -59,6 +59,7 @@ body {
 }
 
 /* Navigation */
+/* Navigation */
 .nav {
     background-color: white;
     padding: 1rem;
@@ -72,6 +73,7 @@ body {
     list-style: none;
     overflow-x: auto;
     padding-bottom: 0.5rem;
+    justify-content: center; /* Centers the list items horizontally */
 }
 
 .category-item {
@@ -87,11 +89,11 @@ body {
     background-color: var(--primary-color);
     color: white;
 }
-
 .logo {
     font-weight: bold;
     font-size: 1.5rem;
     font-style: italic;
+    color:#4f46e5;
 }
 
 /* Controls */

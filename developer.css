@@ -1,6 +1,6 @@
 /* Global Styles */
 :root {
-    --primary-color: #000000;
+    --primary-color: #4f46e5;
     --primary-dark: #3a5cd9;
     --secondary-color: #6c757d;
     --success-color: #28a745;
@@ -53,6 +53,7 @@ body {
     font-weight: bold;
     font-size: 1.5rem;
     font-style: italic;
+    color:#4f46e5;
 }
 /* Buttons */
 .button {

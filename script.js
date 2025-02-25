@@ -47,16 +47,34 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // FAQ Accordion functionality
     const accordionHeaders = document.querySelectorAll('.accordion-header');
 
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', function () {
-            this.classList.toggle('active');
-            const content = this.nextElementSibling;
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
-        });
+accordionHeaders.forEach(header => {
+    // Initialize all accordions as closed
+    header.setAttribute('aria-expanded', 'false');
+    
+    header.addEventListener('click', function () {
+        // Toggle aria-expanded attribute
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !isExpanded);
+        
+        // Get the content element that follows this header
+        const content = this.nextElementSibling;
+        
+        // Toggle the active class on the content (not the header)
+        content.classList.toggle('active');
+        
+        // Optional: Close other accordions (accordion style)
+        if (!isExpanded) {
+            accordionHeaders.forEach(otherHeader => {
+                if (otherHeader !== this) {
+                    otherHeader.setAttribute('aria-expanded', 'false');
+                    otherHeader.nextElementSibling.classList.remove('active');
+                }
+            });
+        }
     });
+});
 
     // Newsletter form submission
     const newsletterForms = document.querySelectorAll('form');
